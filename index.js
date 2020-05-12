@@ -223,9 +223,9 @@ const removeStyleTags = ({ page }) =>
     });
   });
 
-const removeScriptTags = ({ page }) => {
+const removeScriptTags = async ({ page }) => {
   page.evaluate(() => {
-    if (!document.getElementById("save-script-tags")) {
+    if (document.querySelector("[data-remove-script]")) {
       Array.from(document.querySelectorAll("script")).forEach((ell) => {
         ell.parentElement && ell.parentElement.removeChild(ell);
       });
